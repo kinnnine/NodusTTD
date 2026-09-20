@@ -1,0 +1,11 @@
+--- OpenTTD_base/os/emscripten/shell.html
++++ OpenTTD_work/os/emscripten/shell.html
+@@ -3,7 +3,7 @@
+   <head>
+     <meta charset="utf-8">
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+-    <title>OpenTTD</title>
++    <title>NodusTTD (OpenTTD 15.3)</title>
+     <style>
+       body {
+         font-family: Tahoma, Arial, Helvetica, sans-serif;

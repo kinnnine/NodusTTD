@@ -1,0 +1,1 @@
+OpenTTD_base/os/emscripten/shell.html
