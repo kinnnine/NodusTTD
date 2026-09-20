@@ -15,7 +15,7 @@ fi
 git clone "$OPENTTD_REPOURL" --branch "$OPENTTD_VERSION" --depth 1 OpenTTD_base
 
 # remove huge folders for size
-rm -rf OpenTTD_base/.git OpenTTD_base/.github OpenTTD_base/docs
+rm -rf OpenTTD_base/.git OpenTTD_base/.github
 
 # truncate any icon and logo files for size
 : > OpenTTD_base/media/openttd.svg
