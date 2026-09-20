@@ -14,3 +14,13 @@ jobs:
       - name: Build OpenTTD
         run: |
           make
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nodusttd
+          path: |
+            dist/openttd.js
+            dist/openttd.data
+            dist/openttd.wasm
+            dist/index.html
