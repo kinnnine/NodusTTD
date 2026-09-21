@@ -21,7 +21,7 @@ NODUSTTD_TAG="$(git tag --points-at HEAD)"
 if [ -n "$NODUSTTD_TAG" ]; then
 	sed -i "s/NODUSTTD_REV/$NODUSTTD_TAG/g"					dist/index.html
 else
-	sed -i "s/NODUSTTD_REV/$(git rev-parse --short HEAD)/g"	dist/index.html
+	sed -i "s/vNODUSTTD_REV/$(git rev-parse --short HEAD)/g"	dist/index.html
 	sed -i 's/NodusTTD/NodusTTD Unstable/g'					dist/manifest.json
 fi
 
