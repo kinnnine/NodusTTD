@@ -29,4 +29,4 @@ else
 	sed -i "s/NODUSTTD_REV/$(git rev-parse --short HEAD)/g"	OpenTTD_base/build/openttd.html
 fi
 
-sed -i "s/OPENTTD_REV/$(cat ../openttd_version)/g"			OpenTTD_base/build/openttd.html
+sed -i "s/OPENTTD_REV/$(cat openttd_version)/g"				OpenTTD_base/build/openttd.html
