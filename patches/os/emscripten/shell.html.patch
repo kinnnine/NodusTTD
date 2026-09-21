@@ -5,7 +5,7 @@
      <meta charset="utf-8">
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 -    <title>OpenTTD</title>
-+    <meta name="description" content="Modified OpenTTD for the web.">
++    <meta name="description" content="Modified OpenTTD for the web">
 +    <title>NodusTTD</title>
 +    <link rel="icon" href="/favicon.ico" />
 +    <link rel="manifest" href="/manifest.json" />
@@ -75,3 +75,15 @@
          },
  
          onWarningFs: function() {
+@@ -223,6 +257,11 @@
+       window.onerror = function() {
+         Module.onAbort();
+       };
++
++      window.onload = function(){
++        if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
++        Module.onWelcome();
++      };
+     </script>
+     {{{ SCRIPT }}}
+   </body>

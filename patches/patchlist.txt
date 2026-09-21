@@ -1,3 +1,2 @@
-OpenTTD_base/os/emscripten/pre.js
 OpenTTD_base/os/emscripten/shell.html
 OpenTTD_base/src/video/video_driver.cpp
