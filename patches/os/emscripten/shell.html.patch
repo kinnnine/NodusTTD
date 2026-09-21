@@ -12,3 +12,66 @@
      <style>
        body {
          font-family: Tahoma, Arial, Helvetica, sans-serif;
+@@ -51,6 +54,16 @@
+         width: 600px;
+       }
+ 
++      #welcome {
++        background-color: #838383;
++        border: 1px solid #a8a8a8;
++        color: #fcf880;
++        display: none;
++        outline: #101010;
++        padding: 0 4px;
++        width: 600px;
++      }
++
+       #title, #message {
+         background-color: #838383;
+         border: 1px solid #a8a8a8;
+@@ -103,6 +116,9 @@
+       <div id="filesystem">
+         Warning: savegames are stored in the Indexed DB of your browser.<br/>Your browser can delete savegames without notice!
+       </div>
++      <div id="welcome">
++        NodusTTD vNODUSTTD_REV.<br/>Running OpenTTD vOPENTTD_REV.<br/>https://github.com/kinnnine/NodusTTD
++      </div>
+     </div>
+     <div>
+       <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+@@ -197,7 +213,14 @@
+           document.getElementById("canvas").style.display = "none";
+ 
+           document.getElementById("title").innerHTML = "Thank you for playing!";
+-          document.getElementById("message").innerHTML = "We hope you enjoyed OpenTTD!<br/><br/>Reload your browser to restart the game.";
++          document.getElementById("message").innerHTML = "We hope you enjoyed OpenTTD!<br/><br/>Closing window in 3 seconds.";
++
++          setTimeout(function() {
++            isBrowser = window.matchMedia("(display-mode: browser)").matches;
++            if (!isBrowser) {
++              window.close();
++            }
++          }, 3000)
+         },
+ 
+         onAbort: function() {
+@@ -205,7 +228,18 @@
+ 
+           document.getElementById("box").className = "error";
+           document.getElementById("title").innerHTML = "Crash :(";
+-          document.getElementById("message").innerHTML = "The game crashed!<br/><br/>Please reload your browser to restart the game.";
++          document.getElementById("message").innerHTML = "The game crashed!<br/><br/>Try pressing CTRL+F5 or CTRL+R to reload the game.";
++        },
++
++        onWelcome: function() {
++          document.getElementById("welcome").style.display = "inline-block";
++          document.getElementById("overlay").style.opacity = 1;
++          setTimeout(function() {
++            document.getElementById("overlay").style.opacity = 0;
++            setTimeout(function() {
++              document.getElementById("welcome").style.display = "none";
++            }, 300);
++          }, 5000);
+         },
+ 
+         onWarningFs: function() {
