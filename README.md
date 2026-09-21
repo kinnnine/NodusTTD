@@ -4,7 +4,10 @@ OpenTTD Modification for the web that's capable of playing offline with addition
 
 ## Play Now!
 
-Latest stable NodusTTD revision is live on [nodusttd.surge.sh](https://nodusttd.surge.sh), make sure to click `Install` button in the right corner of the URL bar (specially for ChromeOS users).
+Make sure to click the `Install` button in the right corner of the URL bar (specially for ChromeOS users).
+
+- Latest stable revision is live on [nodusttd.surge.sh](https://nodusttd.surge.sh)
+- Latest unstable revision is live on [nodusttd2.surge.sh](https://nodusttd2.surge.sh)
 
 ## Building
 
