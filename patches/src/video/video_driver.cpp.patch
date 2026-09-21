@@ -1,0 +1,9 @@
+--- OpenTTD_base/src/video/video_driver.cpp
++++ OpenTTD_work/src/video/video_driver.cpp
+@@ -190,5 +190,5 @@
+  */
+ /* static */ std::string VideoDriver::GetCaption()
+ {
+-	return fmt::format("OpenTTD {}", _openttd_revision);
++	return fmt::format("NodusTTD (OpenTTD {})", _openttd_revision);
+ }
