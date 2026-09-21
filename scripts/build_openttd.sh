@@ -21,12 +21,3 @@
 	docker run -i --rm -v $(pwd):$(pwd) -u $(id -u):$(id -g) \
 		--workdir $(pwd)/build emsdk-openttd emmake make -j$(nproc)
 )
-
-NODUSTTD_TAG="$(git tag --points-at HEAD)"
-if [ -n "$NODUSTTD_TAG" ]; then
-	sed -i "s/NODUSTTD_REV/$NODUSTTD_TAG/g"					OpenTTD_base/build/openttd.html
-else
-	sed -i "s/NODUSTTD_REV/$(git rev-parse --short HEAD)/g"	OpenTTD_base/build/openttd.html
-fi
-
-sed -i "s/OPENTTD_REV/$(cat openttd_version)/g"				OpenTTD_base/build/openttd.html

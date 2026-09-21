@@ -16,3 +16,13 @@ cp -v public/sw.js 							dist/sw.js
 cp -v OpenTTD_base/media/openttd.512.png	dist/logo512.png
 
 convert OpenTTD_base/media/openttd.256.png -define icon:auto-resize=256,64,48,32,16 dist/favicon.ico
+
+NODUSTTD_TAG="$(git tag --points-at HEAD)"
+if [ -n "$NODUSTTD_TAG" ]; then
+	sed -i "s/NODUSTTD_REV/$NODUSTTD_TAG/g"					dist/index.html
+else
+	sed -i "s/NODUSTTD_REV/$(git rev-parse --short HEAD)/g"	dist/index.html
+	sed -i 's/NodusTTD/NodusTTD Unstable/g'					dist/manifest.json
+fi
+
+sed -i "s/OPENTTD_REV/$(cat openttd_version)/g"				dist/index.html
