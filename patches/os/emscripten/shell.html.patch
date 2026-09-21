@@ -19,7 +19,7 @@
 +      #welcome {
 +        background-color: #838383;
 +        border: 1px solid #a8a8a8;
-+        color: #fcf880;
++        color: #000;
 +        display: none;
 +        outline: #101010;
 +        padding: 0 4px;
@@ -71,7 +71,7 @@
 +            setTimeout(function() {
 +              document.getElementById("welcome").style.display = "none";
 +            }, 300);
-+          }, 5000);
++          }, 3000);
          },
  
          onWarningFs: function() {
