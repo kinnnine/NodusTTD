@@ -1,7 +1,9 @@
-name: Standalone build
+name: Deployment (Stable)
 
 on:
-  workflow_dispatch:
+  push:
+    tags:
+    - '*'
 
 jobs:
   build:
@@ -17,12 +19,10 @@ jobs:
           sudo apt install imagemagick -y
           make
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      - name: Deploy to surge.sh
+        uses: dswistowski/surge-sh-action@v1
         with:
-          name: nodusttd
-          path: |
-            dist/openttd.js
-            dist/openttd.data
-            dist/openttd.wasm
-            dist/index.html
+          domain: 'nodusttd.surge.sh'
+          project: 'dist'
+          login: ${{ secrets.surge_login }}
+          token: ${{ secrets.surge_token }}
