@@ -12,14 +12,15 @@
      <style>
        body {
          font-family: Tahoma, Arial, Helvetica, sans-serif;
-@@ -51,6 +54,16 @@
+@@ -51,6 +54,17 @@
          width: 600px;
        }
  
 +      #welcome {
 +        background-color: #838383;
 +        border: 1px solid #a8a8a8;
-+        color: #000;
++        color: #fcfcfc;
++        text-shadow: 1px 1px #101010;
 +        display: none;
 +        outline: #101010;
 +        padding: 0 4px;
@@ -29,7 +30,7 @@
        #title, #message {
          background-color: #838383;
          border: 1px solid #a8a8a8;
-@@ -103,6 +116,9 @@
+@@ -103,6 +117,9 @@
        <div id="filesystem">
          Warning: savegames are stored in the Indexed DB of your browser.<br/>Your browser can delete savegames without notice!
        </div>
@@ -39,7 +40,7 @@
      </div>
      <div>
        <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
-@@ -197,7 +213,14 @@
+@@ -197,7 +214,14 @@
            document.getElementById("canvas").style.display = "none";
  
            document.getElementById("title").innerHTML = "Thank you for playing!";
@@ -55,7 +56,7 @@
          },
  
          onAbort: function() {
-@@ -205,7 +228,18 @@
+@@ -205,7 +229,18 @@
  
            document.getElementById("box").className = "error";
            document.getElementById("title").innerHTML = "Crash :(";
@@ -75,7 +76,7 @@
          },
  
          onWarningFs: function() {
-@@ -223,6 +257,11 @@
+@@ -223,6 +258,11 @@
        window.onerror = function() {
          Module.onAbort();
        };
