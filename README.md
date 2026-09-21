@@ -9,6 +9,7 @@ Using GitHub Action is recommended, however can be done inside any Linux distrib
 ### Requirements
 
 - Bash, tar, diff, patch, make
+- ImageMagick
 - Docker Engine
 - Git
 
