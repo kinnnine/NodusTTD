@@ -13,8 +13,8 @@ jobs:
 
       - name: Build OpenTTD
         run: |
-          apt update
-          apt install imagemagick
+          sudo apt update && sudo apt upgrade -y
+          sudo apt install imagemagick -y
           make
 
       - name: Upload Artifact
