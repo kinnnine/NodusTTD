@@ -1,0 +1,27 @@
+--- OpenTTD_base/src/table/settings/gui_settings.ini
++++ OpenTTD_work/src/table/settings/gui_settings.ini
+@@ -20,6 +20,7 @@
+ static constexpr std::initializer_list<std::string_view> _osk_activation{"disabled"sv, "double"sv, "single"sv, "immediately"sv};
+ static constexpr std::initializer_list<std::string_view> _savegame_date{"long"sv, "short"sv, "iso"sv};
+ static constexpr std::initializer_list<std::string_view> _right_click_close{"no"sv, "yes"sv, "except sticky"sv};
++static constexpr std::initializer_list<std::string_view> _cursor_rendering_mode{"game"sv, "system"sv, "html5"sv};
+ 
+ static const SettingVariant _gui_settings_table[] = {
+ [post-amble]
+@@ -920,3 +921,15 @@
+ cat      = SC_BASIC
+ startup  = true
+ 
++[SDTC_OMANY]
++var      = gui.cursor_rendering_mode
++type     = SLE_UINT8
++flags    = SettingFlag::NotInSave, SettingFlag::NoNetworkSync, SettingFlag::GuiDropdown
++def      = CRM_GAME
++min      = CRM_GAME
++max      = CRM_HTML5
++full     = _cursor_rendering_mode
++str      = STR_CONFIG_SETTING_CURSOR_RENDERING_MODE
++strhelp  = STR_CONFIG_SETTING_CURSOR_RENDERING_MODE_HELPTEXT
++strval   = STR_CONFIG_SETTING_CURSOR_RENDERING_MODE_GAME
++cat      = SC_BASIC
+\ No newline at end of file

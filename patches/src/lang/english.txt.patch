@@ -1,0 +1,16 @@
+--- OpenTTD_base/src/lang/english.txt
++++ OpenTTD_work/src/lang/english.txt
+@@ -1747,6 +1747,13 @@
+ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES                    :Yes
+ STR_CONFIG_SETTING_RIGHT_MOUSE_WND_CLOSE_YES_EXCEPT_STICKY      :Yes, except sticky
+ 
++STR_CONFIG_SETTING_CURSOR_RENDERING_MODE                        :Cursor rendering mode: {STRING2}
++STR_CONFIG_SETTING_CURSOR_RENDERING_MODE_HELPTEXT               :Change how mouse cursor renders, allows HTML5 cursor or system cursor and disable in-game cursor rendering
++###length 3
++STR_CONFIG_SETTING_CURSOR_RENDERING_MODE_GAME                   :Game
++STR_CONFIG_SETTING_CURSOR_RENDERING_MODE_SYSTEM                 :System
++STR_CONFIG_SETTING_CURSOR_RENDERING_MODE_HTML5                  :HTML5
++
+ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES                    :Use the {STRING2} date format for savegame names
+ STR_CONFIG_SETTING_DATE_FORMAT_IN_SAVE_NAMES_HELPTEXT           :Format of the date in save game filenames
+ ###length 3

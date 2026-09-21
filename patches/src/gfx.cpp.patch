@@ -1,0 +1,22 @@
+--- OpenTTD_base/src/gfx.cpp
++++ OpenTTD_work/src/gfx.cpp
+@@ -1338,6 +1338,9 @@
+ 	/* Don't undraw mouse cursor if it is handled by the video driver. */
+ 	if (VideoDriver::GetInstance()->UseSystemCursor()) return;
+ 
++	/* Don't undraw mouse cursor if system or html5 cursor rendering mode is activated */
++	if (_settings_client.gui.cursor_rendering_mode == CRM_SYSTEM || _settings_client.gui.cursor_rendering_mode == CRM_HTML5) return;
++
+ 	/* Don't undraw the mouse cursor if the screen is not ready */
+ 	if (_screen.dst_ptr == nullptr) return;
+ 
+@@ -1354,6 +1357,9 @@
+ 	/* Don't draw mouse cursor if it is handled by the video driver. */
+ 	if (VideoDriver::GetInstance()->UseSystemCursor()) return;
+ 
++	/* Don't draw mouse cursor if system or html5 cursor rendering mode is activated */
++	if (_settings_client.gui.cursor_rendering_mode == CRM_SYSTEM || _settings_client.gui.cursor_rendering_mode == CRM_HTML5) return;
++
+ 	/* Don't draw the mouse cursor if the screen is not ready */
+ 	if (_screen.dst_ptr == nullptr) return;
+ 

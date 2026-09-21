@@ -1,2 +1,6 @@
 OpenTTD_base/os/emscripten/shell.html
+OpenTTD_base/src/gfx.cpp
+OpenTTD_base/src/lang/english.txt
+OpenTTD_base/src/settings_type.h
+OpenTTD_base/src/table/settings/gui_settings.ini
 OpenTTD_base/src/video/video_driver.cpp

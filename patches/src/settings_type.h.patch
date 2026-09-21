@@ -1,0 +1,25 @@
+--- OpenTTD_base/src/settings_type.h
++++ OpenTTD_work/src/settings_type.h
+@@ -99,6 +99,13 @@
+ 	RCC_YES_EXCEPT_STICKY,
+ };
+ 
++/** Possible values for "cursor_rendering_mode" setting. */
++enum CursorRenderingMode : uint8_t {
++	CRM_GAME = 0,
++	CRM_SYSTEM,
++	CRM_HTML5,
++};
++
+ /**
+  * List of tree placer algorithm.
+  *
+@@ -257,6 +264,8 @@
+ 
+ 	bool   scale_bevels;                     ///< bevels are scaled with GUI scale.
+ 
++	CursorRenderingMode cursor_rendering_mode; ///< change how cursor renders, to use HTML5 cursor or system cursor
++
+ 	/**
+ 	 * Returns true when the user has sufficient privileges to edit newgrfs on a running game
+ 	 * @return whether the user has sufficient privileges to edit newgrfs in an existing game
