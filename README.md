@@ -2,6 +2,10 @@
 
 OpenTTD Modification for the web that's capable of playing offline with additional features, served as a PWA.
 
+## Play Now!
+
+Latest stable NodusTTD revision is live on [nodusttd.surge.sh](https://nodusttd.surge.sh), make sure to click `Install` button in the right corner of the URL bar (specially for ChromeOS users).
+
 ## Building
 
 Using GitHub Action is recommended, however can be done inside any Linux distribution that has below requirements/packages available.
