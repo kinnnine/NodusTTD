@@ -26,3 +26,11 @@ else
 fi
 
 sed -i "s/OPENTTD_REV/$(cat openttd_version)/g"				dist/index.html
+
+(
+	cd dist
+	for file in *.*; do
+		[ "$file" = "sw.js" ] && continue
+		sha256sum "$file" | awk '{print "// "$1 " " $2}' >> sw.js
+	done
+)
