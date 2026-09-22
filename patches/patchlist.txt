@@ -1,3 +1,4 @@
+OpenTTD_base/os/emscripten/pre.js
 OpenTTD_base/os/emscripten/shell.html
 OpenTTD_base/src/gfx.cpp
 OpenTTD_base/src/lang/english.txt

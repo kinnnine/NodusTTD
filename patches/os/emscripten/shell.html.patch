@@ -1,17 +1,19 @@
 --- OpenTTD_base/os/emscripten/shell.html
 +++ OpenTTD_work/os/emscripten/shell.html
-@@ -3,7 +3,10 @@
+@@ -3,8 +3,11 @@
    <head>
      <meta charset="utf-8">
      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 -    <title>OpenTTD</title>
+-    <style>
 +    <meta name="description" content="Modified OpenTTD for the web">
 +    <title>NodusTTD</title>
 +    <link rel="icon" href="/favicon.ico" />
 +    <link rel="manifest" href="/manifest.json" />
-     <style>
++    <style id="stylesheet">
        body {
          font-family: Tahoma, Arial, Helvetica, sans-serif;
+         font-size: 14px;
 @@ -51,6 +54,17 @@
          width: 600px;
        }

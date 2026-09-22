@@ -1,0 +1,23 @@
+--- OpenTTD_base/os/emscripten/pre.js
++++ OpenTTD_work/os/emscripten/pre.js
+@@ -84,6 +84,20 @@
+          */
+     }
+ 
++    window.openttd_cursor_rendering_mode = function(mode) {
++        const css = document.getElementById('stylesheet').sheet;
++        switch (mode) {
++            case 1:
++                css.cssRules[12].style.setProperty('cursor', 'default', 'important');
++                break;
++            case 2:
++                css.cssRules[12].style.setProperty('cursor', 'default', 'important');
++                break;
++            default:
++                css.cssRules[12].style.setProperty('cursor', 'none', 'important');
++        }
++    }
++
+     var leftButtonDown = false;
+     document.addEventListener("mousedown", e => {
+         if (e.button == 0) {
