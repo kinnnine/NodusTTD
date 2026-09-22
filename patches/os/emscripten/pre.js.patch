@@ -1,10 +1,11 @@
 --- OpenTTD_base/os/emscripten/pre.js
 +++ OpenTTD_work/os/emscripten/pre.js
-@@ -84,6 +84,20 @@
+@@ -84,6 +84,21 @@
           */
      }
  
 +    window.openttd_cursor_rendering_mode = function(mode) {
++        console.log(mode);
 +        const css = document.getElementById('stylesheet').sheet;
 +        switch (mode) {
 +            case 1:

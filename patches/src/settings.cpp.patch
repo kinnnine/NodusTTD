@@ -1,0 +1,34 @@
+--- OpenTTD_base/src/settings.cpp
++++ OpenTTD_work/src/settings.cpp
+@@ -52,6 +52,9 @@
+ #include "fios.h"
+ #include "fileio_func.h"
+ #include "settings_cmd.h"
++#ifdef __EMSCRIPTEN__
++#	include <emscripten.h>
++#endif
+ 
+ #include "table/strings.h"
+ 
+@@ -1445,6 +1448,10 @@
+ 			_settings_client.gui.right_click_wnd_close = old_value.value_or(false) ? RCC_YES : RCC_NO;
+ 		}
+ 
++#ifdef __EMSCRIPTEN__
++		EM_ASM({if (window["openttd_cursor_rendering_mode"]) openttd_cursor_rendering_mode($0); }, _settings_client.gui.cursor_rendering_mode);
++#endif
++
+ 		_grfconfig_newgame = GRFLoadConfig(generic_ini, "newgrf", false);
+ 		_grfconfig_static  = GRFLoadConfig(generic_ini, "newgrf-static", true);
+ 		AILoadConfig(generic_ini, "ai_players");
+@@ -1517,6 +1524,10 @@
+ 		}
+ 	}
+ 
++#ifdef __EMSCRIPTEN__
++	EM_ASM({if (window["openttd_cursor_rendering_mode"]) openttd_cursor_rendering_mode($0); }, _settings_client.gui.cursor_rendering_mode);
++#endif
++
+ 	HandleSettingDescs(generic_ini, private_ini, secrets_ini, IniSaveSettings, IniSaveSettingList);
+ 	GraphicsSetSaveConfig(generic_ini);
+ 	GRFSaveConfig(generic_ini, "newgrf", _grfconfig_newgame);
