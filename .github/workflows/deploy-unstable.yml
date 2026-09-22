@@ -13,8 +13,8 @@ jobs:
 
       - name: Build OpenTTD
         run: |
-          sudo apt update && sudo apt upgrade -y
-          sudo apt install imagemagick -y
+          sudo apt update
+          sudo apt install imagemagick -y --no-install-recommends
           make
 
       - name: Deploy to surge.sh
