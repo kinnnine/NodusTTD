@@ -3,6 +3,14 @@ const addResourcesToCache = async (resources) => {
   await cache.addAll(resources);
 };
 
+const cacheFirst = async (request) => {
+  const responseFromCache = await caches.match(request);
+  if (responseFromCache) {
+    return responseFromCache;
+  }
+  return fetch(request);
+};
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     addResourcesToCache([
@@ -16,33 +24,8 @@ self.addEventListener("install", (event) => {
       "/favicon.ico",
     ]),
   );
-  self.skipWaiting();
 });
 
 self.addEventListener("fetch", (event) => {
-  if (!event.request.url.startsWith('https')) return;
-  event.respondWith(
-    fetch(event.request)
-      .then((networkResponse) => {
-        if (networkResponse.status === 200) {
-          const responseClone = networkResponse.clone();
-          caches.open("v1").then((cache) => {
-            cache.put(event.request, responseClone);
-          });
-        }
-        return networkResponse;
-      })
-      .catch(async () => {
-        const cachedResponse = await caches.match(event.request);
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-        if (event.request.mode === "navigate") {
-          return new Response(
-            "<h1>You might delete the web files, connect to internet to reload again.</h1>",
-            { headers: { "Content-Type": "text/html; charset=utf-8" } }
-          );
-        }
-      })
-  );
+  event.respondWith(cacheFirst(event.request));
 });
