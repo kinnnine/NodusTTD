@@ -1,0 +1,13 @@
+--- OpenTTD_base/src/strings.cpp
++++ OpenTTD_work/src/strings.cpp
+@@ -1289,6 +1289,10 @@
+ 					builder += _openttd_revision;
+ 					break;
+ 
++				case SCC_NODUSTTD_REVISION: // {NODUSTTD_REV}
++					builder += _nodusttd_revision;
++					break;
++
+ 				case SCC_RAW_STRING_POINTER: // {RAW_STRING}
+ 					FormatString(builder, args.GetNextParameterString(), args);
+ 					break;

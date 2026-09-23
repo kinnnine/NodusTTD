@@ -1,0 +1,10 @@
+--- OpenTTD_base/src/table/control_codes.h
++++ OpenTTD_work/src/table/control_codes.h
+@@ -39,6 +39,7 @@
+ 
+ 	/* Formatting control codes */
+ 	SCC_REVISION,
++	SCC_NODUSTTD_REVISION,
+ 	SCC_COMPANY_NUM,
+ 	SCC_STATION_FEATURES,
+ 	SCC_INDUSTRY_NAME,

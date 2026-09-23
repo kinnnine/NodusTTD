@@ -1,0 +1,13 @@
+--- OpenTTD_base/cmake/scripts/FindVersion.cmake
++++ OpenTTD_work/cmake/scripts/FindVersion.cmake
+@@ -7,6 +7,10 @@
+     set(REV_MINOR 0)
+ endif()
+ 
++if(NOT REV_NODUSTTD_VERSION)
++    set(REV_NODUSTTD_VERSION norev0000)
++endif()
++
+ #
+ # Finds the current version of the current folder.
+ #
