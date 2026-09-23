@@ -63,7 +63,7 @@
            document.getElementById("box").className = "error";
            document.getElementById("title").innerHTML = "Crash :(";
 -          document.getElementById("message").innerHTML = "The game crashed!<br/><br/>Please reload your browser to restart the game.";
-+          document.getElementById("message").innerHTML = "The game crashed!<br/><br/>Try pressing CTRL+F5 or CTRL+R to reload the game.";
++          document.getElementById("message").innerHTML = "The game crashed!<br/><br/>Try pressing CTRL+R to reload the game.";
 +        },
 +
 +        onWelcome: function() {
@@ -78,7 +78,15 @@
          },
  
          onWarningFs: function() {
-@@ -223,6 +258,11 @@
+@@ -216,13 +251,18 @@
+             setTimeout(function() {
+               document.getElementById("filesystem").style.display = "none";
+             }, 300);
+-          }, 10000);
++          }, 5000);
+         }
+       };
+ 
        window.onerror = function() {
          Module.onAbort();
        };
