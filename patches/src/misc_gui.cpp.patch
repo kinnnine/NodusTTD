@@ -1,0 +1,19 @@
+--- OpenTTD_base/src/misc_gui.cpp
++++ OpenTTD_work/src/misc_gui.cpp
+@@ -337,6 +337,7 @@
+ 		EndContainer(),
+ 		NWidget(WWT_LABEL, INVALID_COLOUR, WID_A_WEBSITE),
+ 		NWidget(WWT_LABEL, INVALID_COLOUR, WID_A_COPYRIGHT),
++		NWidget(WWT_LABEL, INVALID_COLOUR), SetStringTip(STR_ABOUT_COPYRIGHT_NODUSTTD),
+ 	EndContainer(),
+ };
+ 
+@@ -429,7 +430,7 @@
+ 
+ 	std::string GetWidgetString(WidgetID widget, StringID stringid) const override
+ 	{
+-		if (widget == WID_A_WEBSITE) return "Website: https://www.openttd.org";
++		if (widget == WID_A_WEBSITE) return "Website: https://github.com/kinnnine/NodusTTD";
+ 		if (widget == WID_A_COPYRIGHT) return GetString(STR_ABOUT_COPYRIGHT_OPENTTD, _openttd_revision_year);
+ 		return this->Window::GetWidgetString(widget, stringid);
+ 	}

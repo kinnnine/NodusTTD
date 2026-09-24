@@ -23,3 +23,14 @@
  
  STR_INTRO_NEW_GAME                                              :{BLACK}New Game
  STR_INTRO_LOAD_GAME                                             :{BLACK}Load Game
+@@ -3264,8 +3271,9 @@
+ # About OpenTTD window
+ STR_ABOUT_OPENTTD                                               :{WHITE}About OpenTTD
+ STR_ABOUT_ORIGINAL_COPYRIGHT                                    :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+-STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}
++STR_ABOUT_VERSION                                               :{BLACK}OpenTTD version {REV}, NodusTTD {NODUSTTD_REV}
+ STR_ABOUT_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT} 2002-{RAW_STRING} The OpenTTD team
++STR_ABOUT_COPYRIGHT_NODUSTTD                                    :{BLACK}NodusTTD {COPYRIGHT} 2026 Supphakit Duanghoy (kinnnine)
+ 
+ # Framerate display window
+ STR_FRAMERATE_CAPTION                                           :{WHITE}Frame Rate
