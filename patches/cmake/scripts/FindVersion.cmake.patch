@@ -30,7 +30,7 @@
 +        endif()
 +    endif()
 +
-+    if(REV_NODUSTTD_VERSION STREQUAL "")
++    if(NOT REV_NODUSTTD_VERSION)
 +        set(REV_NODUSTTD_VERSION "Unknown")
 +    endif()
 +
