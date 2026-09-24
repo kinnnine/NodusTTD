@@ -1,13 +1,45 @@
 --- OpenTTD_base/cmake/scripts/FindVersion.cmake
 +++ OpenTTD_work/cmake/scripts/FindVersion.cmake
-@@ -7,6 +7,10 @@
-     set(REV_MINOR 0)
- endif()
+@@ -76,6 +76,34 @@
+     )
+     string(REGEX REPLACE "\^0$" "" TAG "${TAG}")
  
-+if(NOT REV_NODUSTTD_VERSION)
-+    set(REV_NODUSTTD_VERSION norev0000)
-+endif()
++    # Set NodusTTD version variable
++    if(EXISTS "${CMAKE_SOURCE_DIR}../.git")
++        # Get the tag
++        execute_process(COMMAND ${GIT_EXECUTABLE} tag --points-at HEAD
++                        OUTPUT_VARIABLE NODUSTTD_TAG
++                        OUTPUT_STRIP_TRAILING_WHITESPACE
++                        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}../
++                        ERROR_QUIET
++        )
 +
- #
- # Finds the current version of the current folder.
- #
++        # Get last commit hash
++        execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
++                        OUTPUT_VARIABLE NODUSTTD_HASH
++                        OUTPUT_STRIP_TRAILING_WHITESPACE
++                        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}../
++                        ERROR_QUIET
++        )
++
++        # Set the version string
++        if(NOT NODUSTTD_TAG STREQUAL "")
++            set(REV_NODUSTTD_VERSION "${NODUSTTD_TAG}")
++        elseif(NOT NODUSTTD_HASH STREQUAL "")
++            set(REV_NODUSTTD_VERSION "${NODUSTTD_HASH}")
++        else()
++            set(REV_NODUSTTD_VERSION "Unknown")
++        endif()
++    endif()
++
+     if(REV_MODIFIED EQUAL 0)
+         set(HASHPREFIX "-g")
+     elseif(REV_MODIFIED EQUAL 2)
+@@ -130,6 +158,7 @@
+ string(REGEX REPLACE "^0?([0-9]+)" "\\1" REV_DATE "${REV_DATE}")
+ 
+ message(STATUS "Version string: ${REV_VERSION}")
++message(STATUS "NodusTTD version string: ${REV_NODUSTTD_VERSION}")
+ 
+ if(GENERATE_OTTDREV)
+     message(STATUS "Generating .ottdrev")
