@@ -1,16 +1,16 @@
 --- OpenTTD_base/cmake/scripts/FindVersion.cmake
 +++ OpenTTD_work/cmake/scripts/FindVersion.cmake
-@@ -76,6 +76,34 @@
+@@ -76,6 +76,36 @@
      )
      string(REGEX REPLACE "\^0$" "" TAG "${TAG}")
  
 +    # Set NodusTTD version variable
-+    if(EXISTS "${CMAKE_SOURCE_DIR}../.git")
++    if(EXISTS "${CMAKE_SOURCE_DIR}/../.git")
 +        # Get the tag
 +        execute_process(COMMAND ${GIT_EXECUTABLE} tag --points-at HEAD
 +                        OUTPUT_VARIABLE NODUSTTD_TAG
 +                        OUTPUT_STRIP_TRAILING_WHITESPACE
-+                        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}../
++                        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/..
 +                        ERROR_QUIET
 +        )
 +
@@ -18,7 +18,7 @@
 +        execute_process(COMMAND ${GIT_EXECUTABLE} rev-parse --short HEAD
 +                        OUTPUT_VARIABLE NODUSTTD_HASH
 +                        OUTPUT_STRIP_TRAILING_WHITESPACE
-+                        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}../
++                        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/..
 +                        ERROR_QUIET
 +        )
 +
@@ -27,15 +27,17 @@
 +            set(REV_NODUSTTD_VERSION "${NODUSTTD_TAG}")
 +        elseif(NOT NODUSTTD_HASH STREQUAL "")
 +            set(REV_NODUSTTD_VERSION "${NODUSTTD_HASH}")
-+        else()
-+            set(REV_NODUSTTD_VERSION "Unknown")
 +        endif()
++    endif()
++
++    if(REV_NODUSTTD_VERSION STREQUAL "")
++        set(REV_NODUSTTD_VERSION "Unknown")
 +    endif()
 +
      if(REV_MODIFIED EQUAL 0)
          set(HASHPREFIX "-g")
      elseif(REV_MODIFIED EQUAL 2)
-@@ -130,6 +158,7 @@
+@@ -130,6 +160,7 @@
  string(REGEX REPLACE "^0?([0-9]+)" "\\1" REV_DATE "${REV_DATE}")
  
  message(STATUS "Version string: ${REV_VERSION}")
