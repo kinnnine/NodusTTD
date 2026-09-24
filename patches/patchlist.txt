@@ -2,6 +2,7 @@ OpenTTD_base/cmake/scripts/FindVersion.cmake
 OpenTTD_base/os/emscripten/pre.js
 OpenTTD_base/os/emscripten/shell.html
 OpenTTD_base/src/gfx.cpp
+OpenTTD_base/src/lang/CMakeLists.txt
 OpenTTD_base/src/lang/english.txt
 OpenTTD_base/src/rev.cpp.in
 OpenTTD_base/src/settingentry_gui.cpp
