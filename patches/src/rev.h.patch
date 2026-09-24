@@ -1,0 +1,10 @@
+--- OpenTTD_base/src/rev.h
++++ OpenTTD_work/src/rev.h
+@@ -11,6 +11,7 @@
+ #define REV_H
+ 
+ extern const std::string _openttd_revision;
++extern const std::string _nodusttd_revision;
+ extern const std::string_view _openttd_build_date;
+ extern const std::string_view _openttd_revision_hash;
+ extern const std::string_view _openttd_revision_year;

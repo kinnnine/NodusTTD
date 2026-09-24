@@ -1,0 +1,10 @@
+--- OpenTTD_base/src/table/strgen_tables.h
++++ OpenTTD_work/src/table/strgen_tables.h
+@@ -62,6 +62,7 @@
+ 	{"POP_COLOUR",        EmitSingleChar, SCC_POP_COLOUR,         0, std::nullopt, {CmdFlag::DontCount}},
+ 
+ 	{"REV",               EmitSingleChar, SCC_REVISION,           0, std::nullopt, {}}, // openttd revision string
++	{"NODUSTTD_REV",      EmitSingleChar, SCC_NODUSTTD_REVISION,  0, std::nullopt, {}}, // nodusttd revision string
+ 
+ 	{"STRING1",           EmitSingleChar, SCC_STRING1,            2, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and ONE argument
+ 	{"STRING2",           EmitSingleChar, SCC_STRING2,            3, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}}, // included string that consumes the string id and TWO arguments
