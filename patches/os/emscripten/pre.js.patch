@@ -1,6 +1,6 @@
 --- OpenTTD_base/os/emscripten/pre.js
 +++ OpenTTD_work/os/emscripten/pre.js
-@@ -84,6 +84,21 @@
+@@ -84,6 +84,22 @@
           */
      }
  
@@ -13,6 +13,7 @@
 +                break;
 +            case 2:
 +                css.cssRules[12].style.setProperty('cursor', 'default', 'important');
++                // IMPLEMENT html5 cursor rendering
 +                break;
 +            default:
 +                css.cssRules[12].style.setProperty('cursor', 'none', 'important');
@@ -22,3 +23,69 @@
      var leftButtonDown = false;
      document.addEventListener("mousedown", e => {
          if (e.button == 0) {
+@@ -95,6 +111,65 @@
+             leftButtonDown = false;
+         }
+     });
++
++    /* Simulate right-click dragging for stylus pen.
++    *  TODO: Configurable (e.button and e.buttons).
++    */
++    var canvas = document.getElementById('canvas');
++    var isStylusButtonDown = false;
++    function simMouseEvent(type, originalEvent) {
++        const simMouse = new MouseEvent(type, {
++            bubbles: true,
++            cancelable: true,
++            view: window,
++            button: 2,
++            buttons: 2,
++            which: 3,
++            clientX: originalEvent.clientX,
++            clientY: originalEvent.clientY,
++            screenX: originalEvent.screenX,
++            screenY: originalEvent.screenY,
++            ctrlKey: originalEvent.ctrlKey,
++            metaKey: originalEvent.metaKey,
++            shiftKey: originalEvent.shiftKey,
++            altKey: originalEvent.altKey
++        });
++        canvas.dispatchEvent(simMouse);
++    }
++
++    canvas.addEventListener('pointerdown', function(e) {
++      if (e.pointerType === 'pen' && (e.button === 32 || e.buttons === 32)) {
++        e.preventDefault();
++        e.stopPropagation();
++        isStylusButtonDown = true;
++        simMouseEvent('mousedown', e);
++      }
++    }, true);
++
++    canvas.addEventListener('pointermove', function(e) {
++      if (isStylusButtonDown && e.pointerType === 'pen') {
++        e.preventDefault();
++        e.stopPropagation();
++        simMouseEvent('mousemove', e);
++      }
++    }, true);
++
++    window.addEventListener('pointerup', function(e) {
++      if (isStylusButtonDown && e.pointerType === 'pen') {
++        e.preventDefault();
++        e.stopPropagation();
++        isStylusButtonDown = false;
++        simMouseEvent('mouseup', e);
++      }
++    }, true);
++
++    canvas.addEventListener('contextmenu', function(e) {
++      if (isStylusButtonDown) {
++        e.preventDefault();
++        e.stopPropagation();
++      }
++    }, true);
++
+     window.openttd_open_url = function(url, url_len) {
+         const url_string = UTF8ToString(url, url_len);
+         function openWindow() {
