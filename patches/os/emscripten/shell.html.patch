@@ -78,12 +78,12 @@
          },
  
          onWarningFs: function() {
-@@ -216,13 +251,18 @@
+@@ -216,14 +251,19 @@
              setTimeout(function() {
                document.getElementById("filesystem").style.display = "none";
              }, 300);
 -          }, 10000);
-+          }, 5000);
++          }, 3000);
          }
        };
  
@@ -98,3 +98,6 @@
      </script>
      {{{ SCRIPT }}}
    </body>
+-</html>
++</html>
+\ No newline at end of file
