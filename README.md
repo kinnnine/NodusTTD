@@ -61,6 +61,6 @@ make genPatches
 
 Finally run `make` again to test it out.
 
-## License
+# License
 
-Anything inside this repository, but excluding OpenTTD source code upon obtaining, building and developing are under MIT License.
+This project licensed under GPLv2 same as OpenTTD.
